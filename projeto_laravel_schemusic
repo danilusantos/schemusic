@@ -1,0 +1,5 @@
+db: mysql-5.7.22
+phpmyadmin: 5.2.1
+php: ^8.2
+laravel: 10.48.10
+composer: 2.7.4
