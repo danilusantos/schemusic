@@ -130,9 +130,9 @@
                     height="30px" alt="User">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <span class="dropdown-header">Usuário</span>
+                <span class="dropdown-header">{{ Auth::user()->name }}</span>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+                <a href="javascript:void(0)" onclick="logout('{{ csrf_token() }}')" class="dropdown-item">
                     <i class="fas fa-sign-out-alt mr-2"></i> Sair
                     {{-- <span class="float-right text-muted text-sm">3 mins</span> --}}
                 </a>
