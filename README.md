@@ -14,6 +14,7 @@ Projeto ScheMusic será um sistema para agendar músicos em eventos cadastrados 
     phpmyadmin: 5.2.1
     composer: 2.7.4
     bootstrap: 5
+    tailwind: 0.5.2
     git: 2.43.0
 ~~~
 
