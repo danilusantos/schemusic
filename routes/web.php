@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.template.app');
+    return view('site.welcome');
 });
 
 Route::get('/dashboard', function () {
