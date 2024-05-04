@@ -45,6 +45,7 @@
         <!-- /.content-wrapper -->
 
         @include('admin.template.footer')
+
     </div>
     <!-- ./wrapper -->
 
