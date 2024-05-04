@@ -23,7 +23,12 @@ Route::prefix('admin')
     ->middleware(['auth', 'verified'])
     ->group(function () {
         require __DIR__.'/admin/dashboard.php';
-        require __DIR__.'/admin/users.php';
+
+        Route::name('administration.')
+            ->prefix('administration')
+            ->group(function () {
+                require __DIR__.'/admin/users.php';
+            });
     });
 
 require __DIR__.'/auth.php';
