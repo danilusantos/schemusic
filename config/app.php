@@ -159,7 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Spatie\Html\HtmlServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */

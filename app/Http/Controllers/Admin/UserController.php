@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public const ROUTE = 'admin.administration.users.';
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(UsersDataTable $dataTable)
     {
-        return view('admin.administration.users.index');
+        return $dataTable->render(self::ROUTE . 'index');
     }
 
     /**
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view(self::ROUTE . '.create');
     }
 
     /**
