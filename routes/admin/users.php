@@ -2,12 +2,12 @@
 
 namespace Routes\Admin;
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('dashboard')
-    ->name('dashboard.')
-    ->controller(DashboardController::class)
+Route::prefix('user')
+    ->name('user.')
+    ->controller(UserController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
     });
