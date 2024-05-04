@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.min.css') }}">
+
+    @yield('styles')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -60,6 +62,7 @@
     <!-- Main -->
     <script src="{{ asset('assets/admin/js/pages/main.js') }}"></script>
 
+    @stack('scripts')
 </body>
 
 </html>
