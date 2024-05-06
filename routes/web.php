@@ -30,5 +30,3 @@ Route::prefix('admin')
                 require __DIR__.'/admin/users.php';
             });
     });
-
-require __DIR__.'/auth.php';
