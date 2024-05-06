@@ -1,4 +1,4 @@
-@extends('admin.template.app', ['title' => 'Dashboard'])
+@extends('admin.layout.app', ['title' => 'Dashboard'])
 
 @section('content')
     <div class="row">
@@ -63,8 +63,8 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
+                <div class="clearfix card-footer">
+                    <ul class="float-right m-0 pagination pagination-sm">
                         <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -80,7 +80,7 @@
                     <h3 class="card-title">Condensed Full Width Table</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body p-0">
+                <div class="p-0 card-body">
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -145,7 +145,7 @@
                     <h3 class="card-title">Simple Full Width Table</h3>
 
                     <div class="card-tools">
-                        <ul class="pagination pagination-sm float-right">
+                        <ul class="float-right pagination pagination-sm">
                             <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
                             <li class="page-item"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body p-0">
+                <div class="p-0 card-body">
                     <table class="table">
                         <thead>
                             <tr>
@@ -218,7 +218,7 @@
                     <h3 class="card-title">Striped Full Width Table</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body p-0">
+                <div class="p-0 card-body">
                     <table class="table table-striped">
                         <thead>
                             <tr>

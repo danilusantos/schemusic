@@ -22,17 +22,17 @@
     <div class="wrapper">
 
         <!-- Navbar -->
-        @include('admin.template.navbar')
+        @include('admin.layout.navbar')
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('admin.template.menu')
+        @include('admin.layout.menu')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <div class="content-header">
-                @include('admin.template.page-header')
+                @include('admin.layout.page-header')
             </div>
             <!-- /.content-header -->
 
@@ -46,7 +46,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        @include('admin.template.footer')
+        @include('admin.layout.footer')
 
     </div>
     <!-- ./wrapper -->

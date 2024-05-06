@@ -1,8 +1,8 @@
-@extends('admin.template.app', ['title' => 'Usuários - Novo Usuário'])
+@extends('admin.layout.app', ['title' => 'Usuários - Novo Usuário'])
 
 @section('content')
 @section('page-header')
-    @include('admin.template.components.back', [
+    @include('admin.layout.components.back', [
         'route' => route('admin.administration.users.index'),
     ])
 @endsection

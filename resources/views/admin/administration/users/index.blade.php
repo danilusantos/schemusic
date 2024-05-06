@@ -1,4 +1,4 @@
-@extends('admin.template.app', ['title' => 'Usuários'])
+@extends('admin.layout.app', ['title' => 'Usuários'])
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.6/css/dataTables.dataTables.min.css">
@@ -6,7 +6,7 @@
 
 @section('content')
 @section('page-header')
-    @include('admin.template.components.create', [
+    @include('admin.layout.components.create', [
         'route' => route('admin.administration.users.create'),
     ])
 @endsection
