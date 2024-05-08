@@ -7,6 +7,8 @@
 
     <title>Schemusic - Painel Administrativo{{ isset($title) ? ' - ' . $title : '' }}</title>
 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.min.css') }}">
+
 
     @yield('styles')
 </head>

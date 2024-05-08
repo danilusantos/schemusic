@@ -161,6 +161,7 @@ return [
          */
         Spatie\Html\HtmlServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Yajra\DataTables\ExportServiceProvider::class,
         /*
          * Application Service Providers...
          */
