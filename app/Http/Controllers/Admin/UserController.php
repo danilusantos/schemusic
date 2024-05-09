@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -47,7 +47,11 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        if (! $user = User::find($id)) {
+            return redirect()->back()->with('error', 'Usuário não encontrado');
+        }
+
+        return view(self::ROUTE . '.edit', compact('user'));
     }
 
     /**

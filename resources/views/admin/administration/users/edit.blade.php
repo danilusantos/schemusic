@@ -1,4 +1,4 @@
-@extends('admin.layout.app', ['title' => 'Usuários - Novo Usuário'])
+@extends('admin.layout.app', ['title' => 'Usuários - Editar Usuário'])
 
 @section('content')
 @section('page-header')
@@ -12,18 +12,17 @@
     <div class="card">
         <div class="card-header bg-dark">
             <span class="card-title text-white">
-                Usuários - Novo usuário
+                Usuários - Editar Usuário
             </span>
         </div>
 
         <div class="card-body">
-            {{ html()->form('POST', route('admin.administration.users.store'))->id('formCadastrar')->open() }}
+            {{ html()->form('PUT', route('admin.administration.users.update', ['user' => $user]))->id('formCadastrar')->open() }}
 
             <div class="row mx-auto">
-
                 @include('admin.administration.users.components.inputs')
-
             </div>
+
             {{ html()->form()->close() }}
         </div>
 
@@ -34,5 +33,7 @@
 </div>
 @endsection
 @push('scripts')
+<script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-validation/localization/messages_pt_BR.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/pages/users/validation.js') }}"></script>
 @endpush

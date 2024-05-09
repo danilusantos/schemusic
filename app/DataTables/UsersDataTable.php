@@ -24,6 +24,12 @@ class UsersDataTable extends DataTable
             })
             ->editColumn('updated_at', function ($row) {
                 return Carbon::parse($row->updated_at)->format(self::DATA_FORMAT);
+            })
+            ->editColumn('action', function ($row) {
+                $editUrl = route('admin.administration.users.edit', $row->id);
+                $deleteUrl = route('admin.administration.users.destroy', $row->id);
+                return '<a href="'.$editUrl.'" class="btn btn-sm btn-primary me-2"><i class="fas fa-edit"></i></a>'.
+                       '<a href="'.$deleteUrl.'" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>';
             });
     }
 
@@ -41,8 +47,6 @@ class UsersDataTable extends DataTable
                     ->orderBy(0, 'desc')
                     ->selectStyleSingle()
                     ->buttons([
-                        Button::make('excel'),
-                        Button::make('pdf'),
                         Button::make('print'),
                         Button::make('reset'),
                         Button::make('reload'),
@@ -51,11 +55,12 @@ class UsersDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            $this->getActions(),
             $this->getId(),
             $this->getName(),
             $this->getEmail(),
             $this->getCreatedAt(),
-            $this->getUpdatedAt()
+            $this->getUpdatedAt(),
         ];
     }
 
@@ -87,7 +92,7 @@ class UsersDataTable extends DataTable
         return Column::make('created_at')
             ->title('Data de Criação')
             ->exportRender(function ($row, $data) {
-                return date('d/m/Y H:i:s', strtotime($data));
+                return date(self::DATA_FORMAT, strtotime($data));
             });
     }
 
@@ -96,7 +101,17 @@ class UsersDataTable extends DataTable
         return Column::make('updated_at')
             ->title('Atualizado')
             ->exportRender(function ($row, $data) {
-                return date('d/m/Y H:i:s', strtotime($data));
+                return date(self::DATA_FORMAT, strtotime($data));
             });
+    }
+
+    protected function getActions()
+    {
+        return Column::make('action')
+            ->title('Ações')
+            ->exportable(false)
+            ->printable(false)
+            ->orderable(false)
+            ->searchable(false);
     }
 }
