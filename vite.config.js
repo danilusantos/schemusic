@@ -8,4 +8,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        https: true, // Certifique-se de que HTTPS está configurado
+    },
 });
