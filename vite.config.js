@@ -9,6 +9,6 @@ export default defineConfig({
         }),
     ],
     server: {
-        https: true, // Certifique-se de que HTTPS está configurado
+        https: false, // Certifique-se de que HTTPS está configurado
     },
 });
