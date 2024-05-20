@@ -2,7 +2,7 @@
 
 @section('content')
 @section('page-header')
-    @include('admin.layout.components.back', [
+    @include('admin.layout.partials.back', [
         'route' => route('admin.administration.users.index'),
     ])
 @endsection
@@ -17,22 +17,25 @@
         </div>
 
         <div class="card-body">
-            {{ html()->form('POST', route('admin.administration.users.store'))->id('formCadastrar')->open() }}
+            <x-alert-message />
+
+            {!! Form::open(['route' => 'admin.administration.users.store', 'method' => 'POST', 'id' => 'form-user']) !!}
 
             <div class="row mx-auto">
 
-                @include('admin.administration.users.components.inputs')
+                @include('admin.administration.users.partials.inputs')
 
             </div>
-            {{ html()->form()->close() }}
+            {!! Form::close() !!}
         </div>
 
         <div class="card-footer bg-dark">
-            <button type="button" class="btn btn-success btn-sm" onclick="formSubmit('#formCadastrar')">Salvar</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="formSubmit('#form-user')">Salvar</button>
         </div>
     </div>
 </div>
 @endsection
-@push('scripts')
+
+@section('scripts')
 <script src="{{ asset('assets/admin/js/pages/users/validation.js') }}"></script>
-@endpush
+@endsection

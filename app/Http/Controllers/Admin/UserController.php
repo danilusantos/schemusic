@@ -9,12 +9,28 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public const ROUTE = 'admin.administration.users.';
+
+    private $userModel;
+
+    public function __construct(User $userModel)
+    {
+        $this->userModel = $userModel;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $users = $this->userModel
+            ->whereNotNull('id')
+            ->orderBy('id', 'desc');
+
+        $data = [
+            'users' => $users->paginate()
+        ];
+
+        return view(self::ROUTE . 'index', compact('data'));
     }
 
     /**
@@ -30,7 +46,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $inputs = $request->only('name', 'email', 'password');
+
+        $inputs['password'] = bcrypt($inputs['password']);
+
+        if (! $this->userModel->create($inputs)) {
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->route(self::ROUTE . 'index');
     }
 
     /**
@@ -58,7 +82,21 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->has('edit-password')) {
+            $inputs = $request->only(['name', 'email', 'password']);
+        } else {
+            $inputs = $request->only(['name', 'email']);
+        }
+
+        if (! $user = $this->userModel->find($id)) {
+            return redirect()->back()->with('error', 'Usuário não encontrado');
+        }
+
+        if (! $user->update($inputs)) {
+            return redirect()->back()->withInput()->with('error', 'Não foi possível atualizar o usuário');
+        }
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Usuário atualizado com sucesso');
     }
 
     /**
@@ -66,6 +104,14 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = $this->userModel->find($id);
+
+        if (! $user && request()->user()->id === $id) {
+            return redirect()->back()->with('error', 'Usuário não encontrado');
+        }
+
+        $user->delete();
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Usuário removido com sucesso');
     }
 }

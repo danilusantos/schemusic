@@ -7,7 +7,7 @@
 
     <title>Schemusic - Painel Administrativo{{ isset($title) ? ' - ' . $title : '' }}</title>
 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite('resources/sass/app.scss')
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.min.css') }}">
-
+    <!-- Admin Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/admin-custom.css') }}">
 
     @yield('styles')
 </head>
@@ -55,7 +56,7 @@
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-
+    @vite('resources/js/app.js')
     <!-- jQuery -->
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -65,7 +66,7 @@
     <!-- Main -->
     <script src="{{ asset('assets/admin/js/pages/main.js') }}"></script>
 
-    @stack('scripts')
+    @yield('scripts')
 </body>
 
 </html>

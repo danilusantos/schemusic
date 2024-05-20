@@ -2,7 +2,7 @@
 
 @section('content')
 @section('page-header')
-    @include('admin.layout.components.back', [
+    @include('admin.layout.partials.back', [
         'route' => route('admin.administration.users.index'),
     ])
 @endsection
@@ -17,23 +17,46 @@
         </div>
 
         <div class="card-body">
-            {{ html()->form('PUT', route('admin.administration.users.update', ['user' => $user]))->id('formCadastrar')->open() }}
+            <x-alert-message />
+            {!! Form::model($user, [
+                'route' => ['admin.administration.users.update', $user],
+                'method' => 'PUT',
+                'id' => 'form-user',
+            ]) !!}
 
             <div class="row mx-auto">
-                @include('admin.administration.users.components.inputs')
+                @include('admin.administration.users.partials.inputs')
             </div>
 
-            {{ html()->form()->close() }}
+            {!! Form::close() !!}
         </div>
 
         <div class="card-footer bg-dark">
-            <button type="button" class="btn btn-success btn-sm" onclick="formSubmit('#formCadastrar')">Salvar</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="formSubmit('#form-user')">Salvar</button>
         </div>
     </div>
 </div>
 @endsection
-@push('scripts')
-<script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jquery-validation/localization/messages_pt_BR.min.js') }}"></script>
+
+@section('scripts')
 <script src="{{ asset('assets/admin/js/pages/users/validation.js') }}"></script>
-@endpush
+<script>
+    function togglePasswordFields() {
+        let passwordFields = $("#password-fields");
+        let checkbox = $("#edit-password");
+        if (checkbox.is(":checked")) {
+            passwordFields.slideDown();
+            passwordFields.find("input").prop("disabled", false);
+        } else {
+            passwordFields.slideUp();
+            passwordFields.find("input").prop("disabled", true);
+        }
+    }
+
+    // Initialize the password fields visibility based on the checkbox state
+    togglePasswordFields();
+
+    // Attach the toggle function to the checkbox change event
+    $("#edit-password").change(togglePasswordFields);
+</script>
+@endsection

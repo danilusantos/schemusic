@@ -1,6 +1,6 @@
-function formSubmit(form) {
-    $(form).validate({
-        errorClass: "fas fa-info-circle small text-danger",
+function formSubmit() {
+    $("#form-user").validate({
+        errorClass: "small text-danger",
         rules: {
             name: {
                 required: true,
@@ -23,10 +23,6 @@ function formSubmit(form) {
         },
     });
 
-    if ($(form).valid()) {
-        $(form).submit();
-    }
-
     jQuery.validator.addMethod(
         "passwordCheck",
         function (value, element) {
@@ -37,4 +33,8 @@ function formSubmit(form) {
         },
         "A senha deve conter pelo menos um número, uma letra maiúscula, uma letra minúscula e um caractere especial."
     );
+
+    if ($("#form-user").valid()) {
+        $("#form-user").submit();
+    }
 }
