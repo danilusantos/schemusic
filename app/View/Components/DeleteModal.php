@@ -2,26 +2,33 @@
 
 namespace App\View\Components;
 
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DeleteModal extends Component
+class DeleteModalButton extends Component
 {
+    public $modalId;
+    public $modalLabel;
+    public $deleteRoute;
+
     /**
      * Create the component instance.
+     *
+     * @param string $modalId
+     * @param string $modalLabel
+     * @param string $deleteRoute
      */
-    public function __construct(
-        public string $modalId,
-        public string $modalLabel,
-        public string $deleteRoute,
-    ) {
+    public function __construct($modalId, $modalLabel, $deleteRoute)
+    {
+        $this->modalId = $modalId;
+        $this->modalLabel = $modalLabel;
+        $this->deleteRoute = $deleteRoute;
     }
 
     /**
      * Get the view / contents that represent the component.
      */
-    public function render(): View
+    public function render()
     {
-        return view('components.delete-modal');
+        return view('components.delete-button');
     }
 }
