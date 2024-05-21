@@ -28,6 +28,7 @@ Route::prefix('admin')
             ->prefix('administration')
             ->group(function () {
                 require __DIR__.'/admin/users.php';
+                require __DIR__.'/admin/groups.php';
             });
     });
 

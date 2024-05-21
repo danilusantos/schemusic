@@ -72,6 +72,14 @@
                                 <p>Usuários</p>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.administration.groups.index') }}"
+                                class="nav-link {{ request()->is('*groups*') ? 'active' : '' }}">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>Grupos</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
