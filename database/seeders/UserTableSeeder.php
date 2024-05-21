@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -13,10 +14,21 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $user = User::create([
+            'group_id' => 1,
             'name' => 'Danilo Santos',
             'email' => 'danilondosantos@gmail.com',
             'password' => bcrypt('danilo123'),
         ]);
+        $user->group->assignPermission('admin');
+
+        $user = User::create([
+            'group_id' => 2,
+            'name' => 'Guilherme Correia',
+            'email' => 'guilhermecorreia@gmail.com',
+            'password' => bcrypt('guilherme123'),
+        ]);
+        $user->group->assignPermission('member');
+
     }
 }

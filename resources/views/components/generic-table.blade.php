@@ -10,15 +10,18 @@
             <caption></caption>
             <thead class="table-dark">
                 <tr>
-                    <th colspan="2">Ações</th>
                     @foreach ($columnsTitle as $columnTitle)
                         <th {{ $columnTitle == 'Id' ? 'class=text-right' : '' }}>{{ ucfirst($columnTitle) }}</th>
                     @endforeach
+                    <th colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data as $item)
                     <tr>
+                        @foreach ($columns as $column)
+                            <td {{ $column == 'id' ? 'class=text-right' : '' }}>{{ $item->$column }}</td>
+                        @endforeach
                         <td class="td-actions">
                             <x-edit-button :route="route('admin.administration.' . $routePrefix . '.edit', [
                                 $model => $item,
@@ -29,9 +32,6 @@
                                 modalLabel="delete{{ ucfirst($model) }}ModalLabel{{ $item->id }}"
                                 deleteRoute="{{ route('admin.administration.' . $routePrefix . '.destroy', [$model => $item->id]) }}" />
                         </td>
-                        @foreach ($columns as $column)
-                            <td {{ $column == 'id' ? 'class=text-right' : '' }}>{{ $item->$column }}</td>
-                        @endforeach
                     </tr>
                 @endforeach
             </tbody>

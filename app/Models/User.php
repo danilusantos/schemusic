@@ -48,8 +48,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function users(): BelongsTo
+    public function group(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Group::class);
+    }
+
+    public function hasPermission($permission): bool
+    {
+        return $this->group->hasPermission($permission);
     }
 }

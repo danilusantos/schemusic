@@ -2,6 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h2>Seja bem-vindo à Schemusic</h2>
+
+        @can('admin')
+            <h1>ADMIN</h1>
+        @endcan
+
     </div>
 @endsection

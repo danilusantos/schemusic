@@ -18,17 +18,35 @@ Route::get('/', function () {
     return view('site.index');
 });
 
+Route::prefix('member')
+    ->name('member.')
+    ->middleware(['auth', 'verified', 'can:member'])
+    ->group(function () {
+
+        Route::get('/', function () {
+            return redirect()->route('member.dashboard.index');
+        });
+
+        require __DIR__ . '/member/dashboard.php';
+
+    });
+
 Route::prefix('admin')
     ->name('admin.')
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth', 'verified', 'can:admin'])
     ->group(function () {
-        require __DIR__.'/admin/dashboard.php';
+
+        Route::get('/', function () {
+            return redirect()->route('admin.dashboard.index');
+        });
+
+        require __DIR__ . '/admin/dashboard.php';
 
         Route::name('administration.')
             ->prefix('administration')
             ->group(function () {
-                require __DIR__.'/admin/users.php';
-                require __DIR__.'/admin/groups.php';
+                require __DIR__ . '/admin/users.php';
+                require __DIR__ . '/admin/groups.php';
             });
     });
 

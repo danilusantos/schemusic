@@ -2,9 +2,7 @@
 
 namespace App\View\Components;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\Component;
-use stdClass;
 
 class GenericForm extends Component
 {
