@@ -1,4 +1,4 @@
-function formSubmit() {
+$(document).ready(function () {
     $("#form-user").validate({
         errorClass: "small text-danger",
         rules: {
@@ -33,8 +33,4 @@ function formSubmit() {
         },
         "A senha deve conter pelo menos um número, uma letra maiúscula, uma letra minúscula e um caractere especial."
     );
-
-    if ($("#form-user").valid()) {
-        $("#form-user").submit();
-    }
-}
+});

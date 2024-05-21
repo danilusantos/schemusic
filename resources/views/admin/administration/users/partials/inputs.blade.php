@@ -1,7 +1,7 @@
 <div class="col-12 col-md-6">
     <div class="form-group">
         {!! Form::label('name', 'Nome') !!}
-        {!! Form::text('name', isset($user) ? $user->name : old('name'), [
+        {!! Form::text('name', isset($data) ? $data->name : old('name'), [
             'placeholder' => 'Nome',
             'id' => 'name',
             'class' => 'form-control',
@@ -12,7 +12,7 @@
 <div class="col-12 col-md-6">
     <div class="form-group">
         {!! Form::label('email', 'E-mail') !!}
-        {!! Form::text('email', isset($user) ? $user->email : old('email'), [
+        {!! Form::text('email', isset($data) ? $data->email : old('email'), [
             'placeholder' => 'E-mail',
             'id' => 'email',
             'class' => 'form-control',

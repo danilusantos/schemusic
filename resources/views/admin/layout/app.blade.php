@@ -66,7 +66,7 @@
     <!-- Main -->
     <script src="{{ asset('assets/admin/js/pages/main.js') }}"></script>
 
-    @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>

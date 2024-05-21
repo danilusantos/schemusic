@@ -7,35 +7,13 @@
     ])
 @endsection
 
-<div class="container">
-
-    <div class="card">
-        <div class="card-header bg-dark">
-            <span class="card-title text-white">
-                Usuários - Novo usuário
-            </span>
-        </div>
-
-        <div class="card-body">
-            <x-alert-message />
-
-            {!! Form::open(['route' => 'admin.administration.users.store', 'method' => 'POST', 'id' => 'form-user']) !!}
-
-            <div class="row mx-auto">
-
-                @include('admin.administration.users.partials.inputs')
-
-            </div>
-            {!! Form::close() !!}
-        </div>
-
-        <div class="card-footer bg-dark">
-            <button type="button" class="btn btn-success btn-sm" onclick="formSubmit('#form-user')">Salvar</button>
-        </div>
-    </div>
+<div class="container-lg">
+    <x-generic-form title="Novo Usuário" action="{{ route('admin.administration.users.store') }}" method="POST"
+        modelName="user" fieldView="admin.administration.users.partials.inputs" />
 </div>
+
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script src="{{ asset('assets/admin/js/pages/users/validation.js') }}"></script>
-@endsection
+@endpush

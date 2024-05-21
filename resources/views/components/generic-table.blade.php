@@ -13,7 +13,7 @@
                 <tr>
                     <th colspan="2">Ações</th>
                     @foreach ($columnsTitle as $columnTitle)
-                        <th>{{ ucfirst($columnTitle) }}</th>
+                        <th {{ $columnTitle == 'Id' ? 'class=text-right' : '' }}>{{ ucfirst($columnTitle) }}</th>
                     @endforeach
                 </tr>
             </thead>
@@ -31,7 +31,7 @@
                                 deleteRoute="{{ route('admin.administration.' . $routePrefix . '.destroy', [$model => $item->id]) }}" />
                         </td>
                         @foreach ($columns as $column)
-                            <td>{{ $item->$column }}</td>
+                            <td {{ $column == 'id' ? 'class=text-right' : '' }}>{{ $item->$column }}</td>
                         @endforeach
                     </tr>
                 @endforeach

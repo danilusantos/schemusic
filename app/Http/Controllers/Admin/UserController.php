@@ -51,7 +51,7 @@ class UserController extends Controller
         $inputs['password'] = bcrypt($inputs['password']);
 
         if (! $this->userModel->create($inputs)) {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Não foi possível cadastrar o usuário');
         }
 
         return redirect()->route(self::ROUTE . 'index');
@@ -71,7 +71,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         if (! $user = User::find($id)) {
-            return redirect()->back()->with('error', 'Usuário não encontrado');
+            $this->notFound();
         }
 
         return view(self::ROUTE . '.edit', compact('user'));
@@ -89,7 +89,7 @@ class UserController extends Controller
         }
 
         if (! $user = $this->userModel->find($id)) {
-            return redirect()->back()->with('error', 'Usuário não encontrado');
+            $this->notFound();
         }
 
         if (! $user->update($inputs)) {
@@ -107,11 +107,16 @@ class UserController extends Controller
         $user = $this->userModel->find($id);
 
         if (! $user && request()->user()->id === $id) {
-            return redirect()->back()->with('error', 'Usuário não encontrado');
+            $this->notFound();
         }
 
         $user->delete();
 
         return redirect()->route(self::ROUTE . 'index')->with('success', 'Usuário removido com sucesso');
+    }
+
+    private function notFound()
+    {
+        return redirect()->back()->with('error', 'Usuário não encontrado');
     }
 }

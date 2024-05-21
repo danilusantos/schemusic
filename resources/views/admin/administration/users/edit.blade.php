@@ -7,38 +7,15 @@
     ])
 @endsection
 
-<div class="container">
-
-    <div class="card">
-        <div class="card-header bg-dark">
-            <span class="card-title text-white">
-                Usuários - Editar Usuário
-            </span>
-        </div>
-
-        <div class="card-body">
-            <x-alert-message />
-            {!! Form::model($user, [
-                'route' => ['admin.administration.users.update', $user],
-                'method' => 'PUT',
-                'id' => 'form-user',
-            ]) !!}
-
-            <div class="row mx-auto">
-                @include('admin.administration.users.partials.inputs')
-            </div>
-
-            {!! Form::close() !!}
-        </div>
-
-        <div class="card-footer bg-dark">
-            <button type="button" class="btn btn-success btn-sm" onclick="formSubmit('#form-user')">Salvar</button>
-        </div>
-    </div>
+<div class="container-lg">
+    <x-generic-form title="Usuários - Editar Usuário"
+        action="{{ route('admin.administration.users.update', ['user' => $user]) }}" method="PUT"
+        fieldView="admin.administration.users.partials.inputs" :model="$user" modelName="user" />
 </div>
+
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script src="{{ asset('assets/admin/js/pages/users/validation.js') }}"></script>
 <script>
     function togglePasswordFields() {
@@ -59,4 +36,4 @@
     // Attach the toggle function to the checkbox change event
     $("#edit-password").change(togglePasswordFields);
 </script>
-@endsection
+@endpush

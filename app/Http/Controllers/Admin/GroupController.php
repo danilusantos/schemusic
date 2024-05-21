@@ -37,7 +37,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view(self::ROUTE . 'create');
     }
 
     /**
@@ -45,7 +45,17 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->only([
+            'name',
+            'description',
+            'key'
+        ]);
+
+        if (! $this->groupModel->create($inputs)) {
+            return redirect()->back()->withInput()->with('error', 'Não foi possível cadastrar o grupo.');
+        }
+
+        return redirect()->route(self::ROUTE . 'index');
     }
 
     /**
@@ -61,7 +71,11 @@ class GroupController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        if (! $group = Group::find($id)) {
+            return redirect()->back()->with('error', 'Grupo não encontrado');
+        }
+
+        return view(self::ROUTE . '.edit', compact('group'));
     }
 
     /**
@@ -69,7 +83,21 @@ class GroupController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $inputs = $request->only([
+            'name',
+            'description',
+            'key'
+        ]);
+
+        if (! $group = $this->groupModel->find($id)) {
+            return redirect()->back()->with('error', 'Grupo não encontrado');
+        }
+
+        if (! $group->update($inputs)) {
+            return redirect()->back()->withInput()->with('error', 'Não foi possível atualizar o grupo');
+        }
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Grupo atualizado com sucesso');
     }
 
     /**
@@ -77,6 +105,12 @@ class GroupController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if (! $group = $this->groupModel->find($id)) {
+            return redirect()->back()->with('error', 'Grupo não encontrado');
+        }
+
+        $group->delete();
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Grupo removido com sucesso');
     }
 }
