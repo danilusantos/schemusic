@@ -6,8 +6,7 @@
     </div>
     <div class="card-body table-responsive">
         <x-alert-message />
-        <table class="table table-striped table-bordered table-sm table-condensed table-hover"
-            id="{{ $routePrefix }}-table">
+        <table class="table table-hover" id="{{ $routePrefix }}-table">
             <caption></caption>
             <thead class="table-dark">
                 <tr>

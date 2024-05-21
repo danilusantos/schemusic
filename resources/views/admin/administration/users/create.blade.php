@@ -9,7 +9,7 @@
 
 <div class="container-lg">
     <x-generic-form title="Novo Usuário" action="{{ route('admin.administration.users.store') }}" method="POST"
-        modelName="user" fieldView="admin.administration.users.partials.inputs" />
+        modelName="user" :model="null" fieldView="admin.administration.users.partials.inputs" />
 </div>
 
 @endsection
