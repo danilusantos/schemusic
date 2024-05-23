@@ -10,7 +10,7 @@
 <div class="container-lg">
     <x-generic-form title="Grupos - Editar Grupo"
         action="{{ route('admin.administration.groups.update', ['group' => $group]) }}" method="PUT"
-        fieldView="admin.administration.groups.partials.inputs" :model="$group" modelName="group" />
+        fieldView="admin.administration.groups.partials.inputs" :model="$group" modelName="group" :backRoute="{{ route('admin.administration.groups.index') }}" />
 </div>
 
 @endsection

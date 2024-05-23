@@ -24,7 +24,7 @@
     @stack('styles')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-closed layout-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->

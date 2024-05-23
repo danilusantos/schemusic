@@ -1,26 +1,29 @@
+<x-alert-message />
 <div class="card">
-    <div class="card-header card-dark bg-dark">
-        <span class="card-title text-white">
+    <div class="card-header clearfix">
+        <span class="card-title text-secondary fw-bold">
             {{ ucfirst($title) }}
         </span>
+
+        <x-create-button :routeCreate="$routeCreate" />
     </div>
-    <div class="card-body table-responsive">
-        <x-alert-message />
-        <table class="table table-hover" id="{{ $routePrefix }}-table">
-            <caption></caption>
-            <thead class="table-dark">
+    <div class="card-body table-responsive p-0">
+        <table class="table m-0 mb-0 table-hover" id="{{ $routePrefix }}-table">
+            <thead>
                 <tr>
                     @foreach ($columnsTitle as $columnTitle)
-                        <th {{ $columnTitle == 'Id' ? 'class=text-right' : '' }}>{{ ucfirst($columnTitle) }}</th>
+                        <th class="{{ $columnTitle == 'Id' ? 'text-right ' : '' }}text-secondary">
+                            {{ ucfirst($columnTitle) }}</th>
                     @endforeach
-                    <th colspan="2">Ações</th>
+                    <th class="text-secondary" colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($data as $item)
                     <tr>
                         @foreach ($columns as $column)
-                            <td {{ $column == 'id' ? 'class=text-right' : '' }}>{{ $item->$column }}</td>
+                            <td class="{{ $column == 'id' ? 'text-right ' : '' }}text-secondary">{{ $item->$column }}
+                            </td>
                         @endforeach
                         <td class="td-actions">
                             <x-edit-button :route="route('admin.administration.' . $routePrefix . '.edit', [
@@ -37,7 +40,9 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer card-dark bg-dark">
-        {{ $data->links() }}
-    </div>
+    @if ($data->links()->paginator->lastPage() > 1)
+        <div class="card-footer">
+            {{ $data->links() }}
+        </div>
+    @endif
 </div>

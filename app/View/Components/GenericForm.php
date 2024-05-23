@@ -22,7 +22,8 @@ class GenericForm extends Component
         public string $method,
         public mixed $model,
         public string $modelName,
-        public string $fieldView
+        public string $fieldView,
+        public $backRoute,
     ) {
         //
     }

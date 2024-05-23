@@ -1,3 +1,3 @@
-<a href="{{ $route }}" class="link text-info link-dark">
-    <i class="left fas fa-plus-circle"></i> Criar
+<a href="{{ $routeCreate }}" class="btn btn-dark bg-navy float-right btn-sm">
+    <i class="left fas fa-plus"></i> Novo
 </a>

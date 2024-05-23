@@ -1,6 +1,7 @@
 <div class="card">
-    <div class="card-header bg-dark">
-        <span class="card-title text-white">
+    <div class="card-header d-flex">
+        <x-back-button :route="$backRoute" />
+        <span class="card-title ms-3 text-secondary fw-bold">
             {{ $title }}
         </span>
     </div>
@@ -17,8 +18,7 @@
             </div>
         </form>
     </div>
-    <div class="card-footer bg-dark">
-        <button type="submit" class="btn btn-success btn-sm"
-            onclick="$('#form-{{ $modelName }}').submit()">Salvar</button>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-success" onclick="$('#form-{{ $modelName }}').submit()">Salvar</button>
     </div>
 </div>

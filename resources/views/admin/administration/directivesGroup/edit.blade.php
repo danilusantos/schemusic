@@ -13,6 +13,8 @@
             <span class="card-title text-white">
                 Diretivas do Grupo
             </span>
+
+            <x-back-button route="{{ route('admin.administration.groups.index') }}" />
         </div>
         <div class="card-body">
             <x-alert-message />

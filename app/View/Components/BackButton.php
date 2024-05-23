@@ -6,15 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CreateButton extends Component
+class BackButton extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct(
-        public $routeCreate
+        public $route
     ) {
-        //
     }
 
     /**
@@ -22,6 +21,6 @@ class CreateButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.create-button');
+        return view('components.back-button');
     }
 }

@@ -9,7 +9,7 @@
 
 <div class="container-lg">
     <x-generic-form title="Novo Grupo" action="{{ route('admin.administration.groups.store') }}" method="POST"
-        modelName="group" :model="null" fieldView="admin.administration.groups.partials.inputs" />
+        modelName="group" :model="null" fieldView="admin.administration.groups.partials.inputs" :backRoute="{{ route('admin.administration.groups.index') }}" />
 </div>
 
 @endsection

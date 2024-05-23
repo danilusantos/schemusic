@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-dark-info elevation-4">
+<aside class="main-sidebar sidebar-dark-warning elevation-2">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard.index') }}" class="brand-link">
-        <img src="{{ asset('assets/admin/img/AdminLTELogo.png') }}" alt="Schemusic Logo" title="Schemusic Home"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ asset('assets/admin/img/logos/logo-simples-amarela.png') }}" alt="Schemusic Logo"
+            title="Schemusic Home" class="brand-image" style="opacity: 1">
         <span class="brand-text font-weight-light">Schemusic</span>
     </a>
 

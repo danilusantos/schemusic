@@ -20,7 +20,8 @@ class GenericTable extends Component
         public $columns,
         public $columnsTitle,
         public $routePrefix,
-        public $title
+        public $title,
+        public $routeCreate
     ) {
         //
     }

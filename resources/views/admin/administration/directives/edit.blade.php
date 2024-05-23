@@ -10,7 +10,8 @@
 <div class="container-lg">
     <x-generic-form title="Editar Diretiva"
         action="{{ route('admin.administration.directives.update', ['directive' => $directive]) }}" method="PUT"
-        fieldView="admin.administration.directives.partials.inputs" :model="$directive" modelName="directive" />
+        fieldView="admin.administration.directives.partials.inputs" :model="$directive" modelName="directive"
+        :backRoute="{{ route('admin.administration.directives.index') }}" />
 </div>
 
 @endsection
