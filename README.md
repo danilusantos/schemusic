@@ -2,8 +2,8 @@
 Projeto ScheMusic será um sistema para agendar músicos em eventos cadastrados na plataforma, vinculados ao Google Agenda.
 
 ## Informações Técnicas
-* **Backend**: Laravel (PHP) - o Laravel será o principal responsável pelo gerenciamento das rotas para o VueJS, comunicação com o Banco de Dados e controle das regras de negócios do projeto;
-* **Banco de Dados**: MySQL, garantindo armazenamento de dados confiável e escalável, juntamente com Redis para cache de alta performance e gerenciamento de sessões.
+* **Backend**: Laravel (PHP) - o Laravel será o principal responsável pelo gerenciamento das rotas para o Front, comunicação com o Banco de Dados e controle das regras de negócios do projeto;
+* **Banco de Dados**: MySQL, garantindo armazenamento de dados confiável e escalável.
 * **Frontend**: HTML, CSS, Javascript, Bootstrap;
 * **Controle de Versão**: Git, para gerenciamento de código e colaboração em equipe.
 
@@ -14,7 +14,6 @@ Projeto ScheMusic será um sistema para agendar músicos em eventos cadastrados 
     phpmyadmin: 5.2.1
     composer: 2.7.4
     bootstrap: 5
-    tailwind: 0.5.2
     git: 2.43.0
 ~~~
 

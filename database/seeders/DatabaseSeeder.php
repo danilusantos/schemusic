@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             GroupTableSeeder::class,
+            PermissionTableSeeder::class,
             UserTableSeeder::class
         ]);
     }

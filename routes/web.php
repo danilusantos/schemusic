@@ -47,6 +47,8 @@ Route::prefix('admin')
             ->group(function () {
                 require __DIR__ . '/admin/users.php';
                 require __DIR__ . '/admin/groups.php';
+                require __DIR__ . '/admin/directives.php';
+                require __DIR__ . '/admin/directivesGroup.php';
             });
     });
 

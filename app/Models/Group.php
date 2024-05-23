@@ -35,12 +35,19 @@ class Group extends Model
 
     public function assignPermission(string $permission): void
     {
-        $this->permissions()->attach(Permission::firstOrCreate(['name' => $permission]));
+        if (! $this->hasPermission($permission)) {
+            $this->permissions()->attach(Permission::firstOrCreate(['name' => $permission]));
+        }
     }
 
     public function removePermission(string $permission): void
     {
         $this->permissions()->detach(Permission::findOrFail(['name' => $permission]));
+    }
+
+    public function removeAllPermissions(): void
+    {
+        $this->permissions()->detach(Permission::select('id')->get()->toArray());
     }
 
 }

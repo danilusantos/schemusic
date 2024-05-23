@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin-custom.css') }}">
 
     @yield('styles')
+
+    @stack('styles')
 </head>
 
 <body class="hold-transition sidebar-mini">
