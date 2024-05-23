@@ -7,7 +7,8 @@
             'class' => 'form-control text-uppercase',
         ]) !!}
     </div>
-
+</div>
+<div class="col-12 col-md-6">
     <div class="form-group">
         {!! Form::label('description', 'Descrição') !!}
         {!! Form::text('description', isset($data) ? $data->description : old('description'), [

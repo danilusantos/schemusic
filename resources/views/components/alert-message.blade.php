@@ -1,5 +1,5 @@
 @if (session('error'))
-    <x-alert type="error" :message="session('error')" />
+    <x-alert type="danger" :message="session('error')" />
 @endif
 
 @if (session('success'))

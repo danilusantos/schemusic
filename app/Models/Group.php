@@ -42,7 +42,7 @@ class Group extends Model
 
     public function removePermission(string $permission): void
     {
-        $this->permissions()->detach(Permission::findOrFail(['name' => $permission]));
+        $this->permissions()->detach(Permission::findOrFail($permission));
     }
 
     public function removeAllPermissions(): void

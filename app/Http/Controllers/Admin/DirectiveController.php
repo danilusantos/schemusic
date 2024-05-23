@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use App\Models\Permission as Directive;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DirectiveController extends Controller
 {
     public const ROUTE = 'admin.administration.directives.';
 
     public function __construct(
-        private Directive $directiveModel
+        private Directive $directiveModel,
+        private Group $groupModel
     ) {
         //
     }
@@ -90,7 +93,7 @@ class DirectiveController extends Controller
         }
 
         if (! $directive->update($inputs)) {
-            return redirect()->back()->withInput()->with('error', 'Não foi possível atualizar o Diretiva');
+            return redirect()->back()->withInput()->with('error', 'Não foi possível atualizar a Diretiva');
         }
 
         return redirect()->route(self::ROUTE . 'index')->with('success', 'Diretiva atualizado com sucesso');
@@ -101,6 +104,28 @@ class DirectiveController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if (! $directive = $this->directiveModel->find($id)) {
+            return redirect()->back()->with('error', 'Diretiva não encontrada.');
+        }
+
+        if (Auth::user()->group->hasPermission($directive->name) && $directive->name === 'ADMIN') {
+            return redirect()->back()->with('error', 'Não é possível remover a diretiva administrativa.');
+        }
+
+        $groups = $this->groupModel->whereHas('permissions', function ($query) use ($directive) {
+            $query->where('name', $directive->name);
+        })->get();
+
+        if (isset($groups)) {
+            foreach ($groups as $group) {
+                if ($group->hasPermission($directive->name)) {
+                    $group->removePermission($directive->id);
+                }
+            }
+        }
+
+        $directive->delete();
+
+        return redirect()->route('admin.administration.directives.index')->with('success', 'Diretiva removida com sucesso.');
     }
 }

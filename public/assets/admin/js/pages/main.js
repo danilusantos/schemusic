@@ -1,7 +1,3 @@
-setTimeout(function () {
-    $(".content-wrapper").fadeIn();
-}, 500);
-
 function logout(token) {
     $.post("/logout", { _token: token }, function () {
         window.location.href = "/";
@@ -14,4 +10,8 @@ setTimeout(function () {
 
 $(".alert").on("transitionend", function () {
     $(this).remove();
+});
+
+$(document).ready(function () {
+    $(".content").fadeIn(500);
 });

@@ -43,7 +43,7 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <div class="content">
+            <div class="content" style="display: none">
                 <div class="container-fluid">
                     @yield('content')
                 </div>
