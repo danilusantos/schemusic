@@ -3,5 +3,5 @@
 @endif
 
 @if (session('success'))
-    <x-alert type="success" :message="session('success')" />
+    <x-alert type="olive" :message="session('success')" />
 @endif

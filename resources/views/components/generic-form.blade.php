@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-header d-flex">
+    <div class="card-header d-flex align-items-center">
         <x-back-button :route="$backRoute" />
         <span class="card-title ms-3 text-secondary fw-bold">
             {{ $title }}

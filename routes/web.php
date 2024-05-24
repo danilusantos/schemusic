@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // Auth::logout();
+
+    // session()->invalidate();
+
+    // session()->regenerateToken();
+
     return view('site.index');
 });
 

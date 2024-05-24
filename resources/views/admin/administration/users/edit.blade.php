@@ -7,7 +7,7 @@
 <div class="container-lg">
     <x-generic-form title="Usuários - Editar Usuário"
         action="{{ route('admin.administration.users.update', ['user' => $user]) }}" method="PUT"
-        fieldView="admin.administration.users.partials.inputs" :model="$user" modelName="user" :backRoute="route('admin.administration.users.index')/>
+        fieldView="admin.administration.users.partials.inputs" :model="$user" modelName="user" :backRoute="route('admin.administration.users.index')" />
 </div>
 @endsection
 

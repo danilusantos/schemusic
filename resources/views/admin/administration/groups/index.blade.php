@@ -8,7 +8,7 @@
                 <span class="card-title text-secondary fw-bold">
                     Grupos
                 </span>
-                <x-create-button :route="$group" />
+                <x-create-button :routeCreate="route('admin.administration.groups.create')" />
             </div>
             <div class="card-body table-responsive p-0">
                 <table class="table mb-0 table-hover" id="groups-table">
