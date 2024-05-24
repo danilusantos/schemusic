@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,10 +12,14 @@ class UserController extends Controller
     public const ROUTE = 'admin.administration.users.';
 
     private $userModel;
+    private $groupModel;
 
-    public function __construct(User $userModel)
-    {
+    public function __construct(
+        User $userModel,
+        Group $groupModel
+    ) {
         $this->userModel = $userModel;
+        $this->groupModel = $groupModel;
     }
 
     /**
@@ -24,10 +29,10 @@ class UserController extends Controller
     {
         $users = $this->userModel
             ->whereNotNull('id')
-            ->orderBy('id', 'desc');
+            ->orderby('id', 'desc');
 
         $data = [
-            'users' => $users->paginate()
+            'users' => $users->paginate(),
         ];
 
         return view(self::ROUTE . 'index', compact('data'));
@@ -38,7 +43,17 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view(self::ROUTE . '.create');
+        $groups = $this->groupModel
+            ->whereNotNull('id')
+            ->orderby('name')
+            ->pluck('name', 'id')
+            ->all();
+
+        $data = [
+            'groups' => $groups
+        ];
+
+        return view(self::ROUTE . '.create', compact('data'));
     }
 
     /**
@@ -46,7 +61,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->only('name', 'email', 'password');
+        $inputs = $request->only('name', 'email', 'password', 'group_id');
+        // dd($inputs);
 
         $inputs['password'] = bcrypt($inputs['password']);
 
@@ -74,7 +90,18 @@ class UserController extends Controller
             $this->notFound();
         }
 
-        return view(self::ROUTE . '.edit', compact('user'));
+        $groups = $this->groupModel
+            ->whereNotNull('id')
+            ->orderby('name')
+            ->pluck('name', 'id')
+            ->all();
+
+        $data = [
+            'user' => $user,
+            'groups' => $groups
+        ];
+
+        return view(self::ROUTE . '.edit', compact('data'));
     }
 
     /**
