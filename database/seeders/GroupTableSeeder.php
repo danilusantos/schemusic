@@ -14,7 +14,7 @@ class GroupTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Group::create([
+        $group = Group::create([
             'id' => 1,
             'name' => 'Administrator',
             'description' => 'Grupo para usuários administradores, com acesso à todo o sistema.',
@@ -22,7 +22,10 @@ class GroupTableSeeder extends Seeder
             'status' => true
         ]);
 
-        Group::create([
+        $group->assignPermission('admin');
+
+
+        $group = Group::create([
             'id' => 2,
             'name' => 'Member',
             'description' => 'Grupo para usuários cadastrados no sistema e com plano ativo / acesso somente a área de membros.',
@@ -30,12 +33,16 @@ class GroupTableSeeder extends Seeder
             'status' => false
         ]);
 
-        Group::create([
+        $group->assignPermission('member');
+
+        $group = Group::create([
             'id' => 3,
             'name' => 'Guest',
             'description' => 'Grupo para usuários cadastrados no sistema e sem plano ativo. / acesso somente ao gerenciamento do próprio usuário e área de pagamentos.',
             'key' => 'GUEST',
             'status' => false
         ]);
+
+        $group->assignPermission('guest');
     }
 }
