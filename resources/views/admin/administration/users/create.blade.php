@@ -5,8 +5,6 @@
 @endpush
 @section('content')
     <div class="container-lg">
-        {{-- <x-generic-form title="Novo Usuário" action="{{  }}" method="POST"
-            modelName="user" :model="null" fieldView="admin.administration.users.partials.inputs" :backRoute="" /> --}}
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <x-back-button :route="route('admin.administration.users.index')" />

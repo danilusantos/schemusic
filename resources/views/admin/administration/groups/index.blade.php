@@ -22,8 +22,8 @@
                     <tbody>
                         @foreach ($data['groups'] as $group)
                             <tr>
-                                <td class=text-right>{{ $group->id }}</td>
-                                <td>{{ $group->name }}</td>
+                                <td class="text-secondary text-right td-ids">{{ $group->id }}</td>
+                                <td class="text-secondary">{{ $group->name }}</td>
                                 <td class="td-actions">
                                     <a href="{{ route('admin.administration.directivesGroup.edit', ['group' => $group->id]) }}"
                                         class="btn btn-sm btn-dark border-secondary">

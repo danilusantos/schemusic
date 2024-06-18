@@ -8,7 +8,7 @@
         <x-create-button :routeCreate="$routeCreate" />
     </div>
     <div class="card-body table-responsive p-0">
-        <table class="table m-0 mb-0 table-hover" id="{{ $routePrefix }}-table">
+        <table class="table table-condensed m-0 mb-0 table-hover" id="{{ $routePrefix }}-table">
             <thead>
                 <tr>
                     @foreach ($columnsTitle as $columnTitle)
@@ -22,7 +22,8 @@
                 @foreach ($data as $item)
                     <tr>
                         @foreach ($columns as $column)
-                            <td class="{{ $column == 'id' ? 'text-right ' : '' }}text-secondary">{{ $item->$column }}
+                            <td class="{{ $column == 'id' ? 'text-right td-ids ' : '' }}text-secondary">
+                                {{ $item->$column }}
                             </td>
                         @endforeach
                         <td class="td-actions">

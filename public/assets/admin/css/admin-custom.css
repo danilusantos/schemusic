@@ -1,4 +1,8 @@
 .td-actions {
-    max-width: fit-content;
     width: 40px;
+}
+
+.td-ids {
+    max-width: 100px;
+    width: 50px;
 }

@@ -87,6 +87,13 @@
                                 <p>Diretivas</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.administration.plans.index') }}"
+                                class="nav-link {{ request()->is('*plans*') ? 'active' : '' }}">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Planos</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
