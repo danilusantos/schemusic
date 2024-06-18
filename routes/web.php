@@ -55,6 +55,7 @@ Route::prefix('admin')
                 require __DIR__ . '/admin/groups.php';
                 require __DIR__ . '/admin/directives.php';
                 require __DIR__ . '/admin/directivesGroup.php';
+                require __DIR__ . '/admin/plans.php';
             });
     });
 
