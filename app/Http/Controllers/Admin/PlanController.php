@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class PlanController extends Controller
 {
     public const ROUTE = 'admin.administration.plans.';
+    public const MESSAGE_NOT_FOUND = 'Plano não encontrado.';
 
     public function __construct(
         protected Plan $planModel
@@ -47,7 +49,23 @@ class PlanController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        return redirect()->route(self::ROUTE . 'index');
+        try {
+            DB::beginTransaction();
+
+            $plan = new Plan();
+            $plan->fill($request->all());
+            $plan->save();
+
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return redirect()
+                ->back()
+                ->withInputs()
+                ->with('error', 'Houve um erro ao cadastrar o plano. Erro: ' . $exception->getMessage());
+        }
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Sucesso ao cadastrar o novo plano.');
     }
 
     /**
@@ -63,7 +81,12 @@ class PlanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        if (! $plan = $this->planModel->find($id)) {
+            return redirect()->back()->with('error', self::MESSAGE_NOT_FOUND);
+        }
+
+        return view(self::ROUTE . '.edit', compact('plan'));
+
     }
 
     /**
@@ -71,7 +94,24 @@ class PlanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (! $plan = $this->planModel->find($id)) {
+            return redirect()->back()->with('error', self::MESSAGE_NOT_FOUND);
+        }
+
+        try {
+            DB::beginTransaction();
+            $plan->fill($request->all());
+            $plan->save();
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return redirect()
+                ->back()
+                ->withInputs()
+                ->with('error', 'Houve um erro ao atualizar o plano. Erro: ' . $exception->getMessage());
+        }
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Sucesso ao atualizar o plano.');
     }
 
     /**
@@ -79,6 +119,14 @@ class PlanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        if (! $plan = $this->planModel->find($id)) {
+            return redirect()->back()->with('error', self::MESSAGE_NOT_FOUND);
+        }
+
+        $plan->delete();
+
+        return redirect()->route(self::ROUTE . 'index')->with('success', 'Plano removido com sucesso');
+
     }
 }

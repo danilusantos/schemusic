@@ -21,7 +21,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-success" onclick="$('#form-plan).submit()">Salvar</button>
+                <button type="submit" class="btn btn-success" onclick="$('#form-plan').submit()">Salvar</button>
             </div>
         </div>
     </div>
