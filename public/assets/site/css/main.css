@@ -1,0 +1,32 @@
+#carouselHero{
+    height: 100%;
+    max-height: 65vh;
+    overflow: hidden;
+}
+
+#carouselHero .item-content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#carouselHero .card-description {
+    width: 100%;
+    max-height: 50vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#carouselHero .card-image {
+    width: 100%;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#carouselHero .card-image img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
