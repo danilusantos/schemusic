@@ -23,9 +23,14 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <span class="dropdown-header">{{ Auth::user()->name }}</span>
                 <div class="dropdown-divider"></div>
-                <a href="javascript:void(0)" onclick="logout('{{ csrf_token() }}')" class="dropdown-item">
-                    <i class="mr-2 fas fa-sign-out-alt"></i> Sair
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>
