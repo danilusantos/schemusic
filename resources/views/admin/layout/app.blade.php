@@ -7,7 +7,7 @@
 
     <title>Schemusic - Painel Administrativo{{ isset($title) ? ' - ' . $title : '' }}</title>
 
-    @vite('resources/sass/app.scss')
+    @vite('resources/js/app.js')
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -57,8 +57,6 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
-    @vite('resources/js/app.js')
     <!-- jQuery -->
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
