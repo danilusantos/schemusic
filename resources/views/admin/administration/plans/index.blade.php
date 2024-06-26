@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Planos'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.plans.index') }}
+@endsection
 @section('content')
     <div class="container-lg">
         <x-alert-message />

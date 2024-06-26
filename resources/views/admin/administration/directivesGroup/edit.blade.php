@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Diretivas do Grupo - Editar Grupo'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.directivesGroup.edit', $data['group']) }}
+@endsection
 @section('content')
     <div class="container-lg">
         <div class="card">

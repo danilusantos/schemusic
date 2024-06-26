@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Grupos'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.groups.index') }}
+@endsection
 @section('content')
     <div class="container-lg">
         <x-alert-message />

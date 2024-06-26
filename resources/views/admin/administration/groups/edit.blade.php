@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Grupos - Editar Grupo'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.groups.edit', $group) }}
+@endsection
 @section('content')
     <div class="container-lg">
         <div class="card">

@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Diretivas - Nova Diretiva'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.directives.create') }}
+@endsection
 @section('content')
     <div class="container-lg">
         <div class="card">

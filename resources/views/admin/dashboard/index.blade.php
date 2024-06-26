@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Dashboard'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.dashboard.index') }}
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-6">

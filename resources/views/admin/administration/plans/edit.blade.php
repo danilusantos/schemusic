@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Planos - Editar Plano'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.plans.edit', $plan) }}
+@endsection
 @section('content')
     <div class="container-lg">
         <div class="card">

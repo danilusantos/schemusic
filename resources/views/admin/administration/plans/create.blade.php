@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Diretivas - Novo Plano'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.plans.create') }}
+@endsection
 @section('content')
     <div class="container-lg">
         <div class="card">

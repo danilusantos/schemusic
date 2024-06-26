@@ -1,5 +1,8 @@
 @extends('admin.layout.app', ['title' => 'Diretivas - Editar Diretiva'])
 
+@section('breadcrumb')
+    {{ Breadcrumbs::render('admin.directives.edit', $directive) }}
+@endsection
 @section('content')
     <div class="container-lg">
         <div class="card">
