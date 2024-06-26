@@ -63,6 +63,7 @@
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/admin/js/adminlte.min.js') }}"></script>
+
     <!-- Main -->
     <script src="{{ asset('assets/admin/js/pages/main.js') }}"></script>
 

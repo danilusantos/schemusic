@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.11.3",
+        "chartjs": "^0.3.24",
         "jquery-validation": "^1.20.0",
         "moment": "^2.30.1"
     }

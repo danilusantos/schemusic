@@ -14,7 +14,9 @@ class CardCountDashboard extends Component
     public function __construct(
         public $title,
         public $value,
-        public $color
+        public $color,
+        public $route,
+        public $icon
     ) {
         //
     }
